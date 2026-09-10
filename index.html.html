@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學年度實習醫學生報到須知</title>
+    <style>
+        :root {
+            --primary-blue: #002D62;
+            --accent-gold: #FFD700;
+            --text-white: #FFFFFF;
+            --bg-light: #F4F4F4;
+            --accent-blue: #3498db;
+        }
+        body { font-family: "Microsoft JhengHei", sans-serif; background-color: var(--bg-light); margin: 0; padding: 20px; color: #333; display: flex; justify-content: center; }
+        .container { max-width: 850px; width: 100%; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        
+        header { background-color: var(--primary-blue); color: var(--accent-gold); padding: 25px; text-align: center; border-bottom: 5px solid var(--accent-gold); }
+        header h1 { margin: 0; font-size: 1.5em; }
+        header p { color: white; margin: 5px 0 0 0; font-size: 0.9em; opacity: 0.9; }
+
+        /* 分頁選單 */
+        .tab-menu { display: flex; background: #e9ecef; overflow-x: auto; white-space: nowrap; padding: 10px; gap: 8px; }
+        .tab-btn { padding: 10px 20px; border: none; background: white; color: var(--primary-blue); border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex-shrink: 0; }
+        .tab-btn.active { background: var(--primary-blue); color: var(--accent-gold); }
+
+        /* 內容區塊 */
+        .content-section { display: none; padding: 25px; animation: fadeIn 0.4s ease; }
+        .content-section.active { display: block; }
+
+        .qa-item { border-bottom: 1px solid #eee; padding: 18px 0; }
+        .qa-item:last-child { border-bottom: none; }
+        .question { font-weight: bold; color: var(--primary-blue); margin-bottom: 10px; display: flex; align-items: flex-start; font-size: 1.1em; outline: none; }
+        .question::before { content: "●"; margin-right: 10px; color: var(--accent-gold); }
+        
+        .answer { line-height: 1.8; padding: 0 15px 0 20px; color: #444; font-size: 1em; outline: none; }
+        
+        /* 懸掛縮排樣式 (Flexbox 對齊) */
+        .indent-list {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        .indent-list > div {
+            white-space: pre-wrap;
+            outline: none;
+            width: 100%;
+        }
+
+        /* 紅色重點文字 */
+        .highlight { color: #d9534f; font-weight: bold; }
+        
+        /* 連結樣式 */
+        .link-container { display: inline; margin-left: 6px; }
+        .link-btn { color: var(--accent-blue); text-decoration: none; font-weight: bold; display: inline-block; vertical-align: baseline; }
+        .link-btn:hover { color: var(--primary-blue); text-decoration: underline; }
+
+        /* 表單區塊樣式 */
+        .form-box { background: #f8f9fa; padding: 15px; border-left: 4px solid var(--primary-blue); margin: 10px 0; border-radius: 4px; text-indent: 0; font-size: 1em; outline: none; }
+
+        footer { background: #f8f9fa; color: #666; text-align: center; padding: 15px; font-size: 0.85em; border-top: 1px solid #eee; }
+
+        /* 管理員功能控制區 */
+        .admin-controls { text-align: center; padding: 15px; background: #eef2f5; border-top: 1px dashed #ccc; user-select: none; }
+        .admin-toolbar { background: #ffffff; padding: 8px 12px; border-radius: 6px; display: inline-flex; gap: 10px; align-items: center; margin-bottom: 10px; border: 1px solid #ddd; flex-wrap: wrap; justify-content: center; }
+        .admin-btn { padding: 8px 18px; border: 1px solid var(--primary-blue); border-radius: 6px; background: white; color: var(--primary-blue); font-weight: bold; cursor: pointer; transition: 0.2s; margin: 4px 5px; }
+        .admin-btn:hover { background: var(--primary-blue); color: white; }
+        .admin-btn.danger { border-color: #d9534f; color: #d9534f; }
+        .admin-btn.danger:hover { background: #d9534f; color: white; }
+        .admin-btn.success { border-color: #28a745; background: #28a745; color: white; }
+        .admin-btn.success:hover { background: #218838; }
+        .admin-btn.student { border-color: #17a2b8; background: #17a2b8; color: white; }
+        .admin-btn.student:hover { background: #138496; }
+        
+        .tool-btn { padding: 5px 10px; border: 1px solid #ccc; background: #f9f9f9; border-radius: 4px; cursor: pointer; font-size: 0.9em; font-weight: bold; color: #333; }
+        .tool-btn:hover { background: #e0e0e0; }
+        .tool-select { padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc; font-size: 0.9em; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container" id="mainContainer">
+    <header>
+        <h1>115學年度實習醫學生 (Clerk-1) <br>【第一梯】報到須知</h1>
+        <p><span style="font-size: 14.4px;"><b>115.09.28～115.10.23<br></b></span>國立陽明交通大學附設醫院 教學研究部</p>
+    </header>
+
+    <!-- 分頁選單 -->
+    <div class="tab-menu">
+        <button class="tab-btn" onclick="openTab(event, 'pre-arrival')">報到前須知</button>
+        <button class="tab-btn" onclick="openTab(event, 'admin')">差勤規範與實習課程</button>
+        <button class="tab-btn" onclick="openTab(event, 'life')">宿舍</button>
+        <button class="tab-btn" onclick="openTab(event, 'traffic')">交通</button>
+        <button class="tab-btn active" onclick="openTab(event, 'course')">活動預告</button>
+        <button class="tab-btn" onclick="openTab(event, 'checkout')">離院流程</button>
+        <button class="tab-btn" onclick="openTab(event, 'contact')">聯絡我們</button>
+    </div>
+
+    <!-- 1. 報到前須知 -->
+    <div id="pre-arrival" class="content-section">
+        <div class="qa-item">
+            <div class="question">重要報到資訊</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div>報到時間：<span class="highlight">2026年9月29日(二) 08:40</span></div></div>
+                <div class="indent-list">
+                    <span>2.&nbsp;</span>
+                    <div>報到地點：蘭陽院區3樓 <b>301會議室</b>&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://drive.google.com/file/d/1ZVPCWpLyONKsDJ0m6JfdU0O8Se1jfbaM/view?usp=sharing" target="_blank" class="link-btn">位置圖</a></span></div>
+                </div>
+                <div class="indent-list">
+                    <span>3.&nbsp;</span>
+                    <div>兩院區<b>免費</b>接駁車：於大門右側搭乘。&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://www.hosp.nycu.edu.tw/ymuhbranch/bus.html" target="_blank" class="link-btn">兩院區接駁車時刻表</a></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">報到所需繳交資料(電子檔) (9/21 中午12:00截止)</div>
+            <div class="answer">
+                <div style="margin-bottom: 8px;">請 E-mail 至 <a href="mailto:18108@hosp.nycu.edu.tw" class="link-btn">18108@hosp.nycu.edu.tw</a>：</div>
+                <div class="indent-list"><span>1.&nbsp;</span><div><b>證件大頭照</b>：如無電子檔，須於<b>報到日</b>繳交照片一張（1吋或2吋皆可）。</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>體檢表</b>：以「實習開始日」為基準，一年內之正式體檢表，需包含：一般檢查項目、<b>B型肝炎、C型肝炎、MMR 抗體、帶狀皰疹抗體及胸部 X 光</b>。若 B型肝炎表面抗原（HBsAg）及表面抗體（Anti-HBs）檢驗結果皆為陰性、MMR 或帶狀皰疹抗體檢驗結果未具陽性抗體，請另檢附疫苗接種證明。</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div><b>外籍學員</b>：居留證及護照影本。</div></div>
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">必填表單與選填 (請注意選填開放及截止時間)</div>
+            <div class="answer">
+                <div class="form-box">
+                    <b>1. 基本資料表 (即日起～9/18 12:00止)</b>：<br>
+                    <span>👉&nbsp;</span><a href="https://reurl.cc/QaD3L9" target="_blank" class="link-btn">點我填寫基本資料表</a>
+                </div>
+                <div class="form-box">
+                    <b>2. 內/外科次專志願 (9/11 19:00</b><b>～</b><b>9/14 12:00止)</b>：<br>
+                    <span>👉&nbsp;</span>內科：<a href="https://forms.gle/UykUuDpq5NgT4QbZ6" target="_blank" class="link-btn">表單</a>｜<a href="https://reurl.cc/VWzvXn" target="_blank" class="link-btn">選填試算表</a><br>
+                    <span>👉&nbsp;</span>外科：<a href="https://forms.gle/w4wiSJkmEc2LF5CX6" target="_blank" class="link-btn">表單</a>｜<a href="https://reurl.cc/jrWZoD" target="_blank" class="link-btn">選填試算表</a>
+                </div>
+                <div class="form-box">
+                    <b>3. 社區醫學課程 (9/16 09:00</b><b>～</b><b>9/20 17:00止)</b>：<br><span>👉&nbsp;</span><a href="https://docs.google.com/spreadsheets/d/1JGZSyt5v7Bnrr56peJorattUnWhh2UbTtANh8ypymuU/edit?gid=0#gid=0" target="_blank" class="link-btn">課表選填連結</a><br>★ 詳細選課規則、各科不可選課時段及注意事項，將另於報到前<b>第二封</b>通知信說明。<br>★ 如對社區醫學課程選填有疑問，請洽家庭醫學部林小姐（分機 71295）。<br></div>
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">自備物品提醒</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div><b>工作服</b>。</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>外科同學</b>：務必自備「<b>刀房工作鞋</b>」（不露腳趾）。</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div><b>雨具</b>：宜蘭天氣多雨，請務必攜帶。</div></div>
+                <div class="indent-list"><span>4.&nbsp;</span><div><b>生活用品</b>：個人盥洗用具、衛生用品(衛生紙、垃圾袋等)、吹風機、筆電。</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 差勤規範與實習課程 -->
+    <div id="admin" class="content-section">
+        <div class="qa-item">
+            <div class="question">每日上下班時間</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div>實習上班時間：週一至週五 08:00<b style="white-space: normal;">～</b>17:30</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div>午休時間：12:00<b style="white-space: normal;">～</b>13:30</div></div>
+                <div class="indent-list"><span class="highlight">★ 臨床科別安排之晨會、午間會議等，均視為正式課程，請務必準時出席。</span></div>
+            </div>
+        </div>
+        <div class="qa-item">
+            <div class="question">實習期間請假規定</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div>請假須提前告知學校<b>醫學系助教</b>、<b>實習單位臨床老師</b>，以及<b>教學研究部</b>朱小姐。</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div>經臨床老師同意後，填妥假單並檢附證明文件，交由老師簽核。<br></div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div>完成簽核之假單須繳交至教學研究部備查。</div></div>
+                <div class="indent-list"><span>4.&nbsp;</span><div><b>未請假逕自離院者，一律以曠課論處，並嚴重影響實習成績</b>。
+</div></div>
+                <div class="indent-list"><span class="highlight">★ 各類假別（病假、事假、公假、喪假、婚假）均須檢附正式證明文件，始得辦理請假。</span></div>
+            </div>
+        </div>
+        <div class="qa-item">
+            <div class="question">醫院資訊系統 (HIS) 、E-Portfolio與圖書資源帳號</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div><b>醫院資訊系統 (HIS)</b>：帳號標示於識別證背面，密碼為<span class="highlight"><font color="#1792de">身分證末 8 碼</font></span>。</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>E-Portfolio</b>：帳號標示於識別證背面，密碼為<span class="highlight"><font color="#1692df">Aa+身分證末 8 碼</font></span>。</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div><b>圖書資源</b>：帳號為學號，密碼為<span class="highlight"><font color="#148cd7">校務系統密碼</font></span>。</div></div>
+                <div class="indent-list"><span class="highlight" style="color: #f50000;">★ 提醒：門診系統權限等同於主治醫師，僅限「查閱病歷」！嚴禁點選<span style="font-size: 1em;">「</span><span style="font-size: 1em;">編修</span><span style="font-size: 1em;">」</span><span style="font-size: 1em;">與</span><span style="font-size: 1em;">「</span><span style="font-size: 1em;">存檔」功能！避免後續影響健保申報！</span></span></div>
+            </div>
+        </div>
+        <div class="qa-item">
+            <div class="question">臨床成績/社區成績佔比</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div>臨床實習課程：70％</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div>社區必修課程：30％ (六堂社區課程)</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 宿舍 -->
+    <div id="life" class="content-section">
+        <div class="qa-item">
+            <div class="question">宿舍住宿須知<span style="color: rgb(102, 102, 102); font-size: 17.82px;"><span style="font-weight: 400;">（宿舍管理員</span>蔡玉榕小姐<span style="font-weight: 400;">，分機：</span>10721<span style="font-weight: 400;">）</span></span></div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div>入住時間：報到日前一天（<b>9/28</b>）中午 12:00 後，若有提前入住需求，請先與宿舍管理員聯繫。</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div>宿舍地點：<b>新民院區 A棟3樓</b>，宿舍管理員會以<b>簡訊</b>通知鑰匙領取事宜（若門號有設定拒收企業簡訊，將無法收到）。</div></div>
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">宿舍設備</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div><b>房間內：</b>備有延長線、檯燈、寢具一套（被單枕套等皆有換洗，如較為怕冷或有特殊需求，建議自備合適之衣物或寢具）。</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>熱水供應時間：</b>每日 <span class="highlight"><font color="#ff0000">17:00～24:00</font></span>（盥洗用品需自備）。</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div><b>曬衣空間限制：</b>宿舍無室外曬衣空間，備有投幣式洗衣機、烘衣機、脫水機，請分流使用。</div></div>
+                <div class="indent-list"><span>4.&nbsp;</span><div><b>網路連線：</b>房間內無提供網路連線，請至公共區域使用 iTaiwan 免費無線網路。</div></div>
+            </div>
+        </div>
+        <div class="qa-item">
+            <div class="question">有哪些需要遵守的公約？</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div><b>夜間安寧：</b>為維護其他學員作息，<span class="highlight">21:00後</span>請務必降低音量，嚴禁在宿舍內大聲喧嘩或從事桌遊社交。</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>財物點收：</b>每床配有一條延長線，<span class="highlight">離院請勿帶走。</span></div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div><b>離院退宿：</b><b>宿舍鑰匙</b>記得歸還新民院區警衛。</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 交通 -->
+    <div id="traffic" class="content-section">
+        <div class="qa-item">
+            <div class="question">兩院區往返交通</div>
+            <div class="answer">
+                <div class="indent-list">
+                    <span>1.&nbsp;</span>
+                    <div>兩院區<b>免費</b>接駁車：於大門右側搭乘。&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://www.hosp.nycu.edu.tw/ymuhbranch/bus.html" target="_blank" class="link-btn">兩院區接駁車時刻表</a></span></div>
+                </div>
+                <div class="indent-list"><span>2.&nbsp;</span><div>步行：持月台票穿越宜蘭火車站。</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div>搭乘「宜蘭勁好行」縣內公車：772線。(末班車約 21:50 離院)</div></div>
+            </div>
+        </div>
+        <div class="qa-item">
+            <div class="question">院內停車申請<div><span style="color: rgb(102, 102, 102); font-size: 17.82px; font-weight: 400;">（宿舍管理員</span><span style="color: rgb(102, 102, 102); font-size: 17.82px;">黃鈺姍小姐</span><span style="color: rgb(102, 102, 102); font-size: 17.82px; font-weight: 400;">，分機：</span><span style="color: rgb(102, 102, 102); font-size: 17.82px;">10890</span><span style="color: rgb(102, 102, 102); font-size: 17.82px; font-weight: 400;">）</span></div></div>
+            <div class="answer">
+                <div class="indent-list">
+                    <span>1.&nbsp;</span>
+                    <div>兩院區均採車牌辨識系統進出，申請連結：&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://forms.gle/eFf3ddhcJ17hApCF7" target="_blank" class="link-btn">停車位申請表單</a></span></div>
+                </div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>停車費用：</b>汽車：每日 33 元；機車：每月 150 元。</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div><b>繳費：</b><span class="highlight">報到 7 天內</span>，避開午休時間，至蘭陽院區地下 2 樓總務室出納組完成繳費。</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. 活動預告 -->
+    <div id="course" class="content-section active">
+<div class="qa-item">
+    <div class="question">鈞長與您有約</div>
+    <div class="answer">
+        <div class="indent-list"><span>1.</span><div>活動時間：<span class="highlight">2026年10月21日(三) 中午12:00</span></div></div>
+        <div class="indent-list">
+            <span>2.</span>
+            <div>活動地點：蘭陽院區地下二樓 <b>第一會議室</b> 👉<span class="link-container"><a href="https://drive.google.com/file/d/1EvYR0vlXPk2V9UQjwhJ0gXr5DGYW9eBq/view?usp=drive_link" target="_blank" class="link-btn">位置圖</a></span></div>
+        </div>
+        <div class="indent-list"><span>3.</span><div>活動主題：<b>實習生活與學習心得分享交流</b></div></div>
+        <div class="indent-list"><span>4.</span><div>活動說明：本活動為輕鬆溫馨的午餐座談，邀請同學們分享交流實習期間的心得與建議。</div></div>
+        <div class="indent-list"><span>5.</span><div>當天餐點：活動備有<span class="highlight">午餐及茶水</span>。</div></div>
+    </div>
+</div><div class="qa-item">
+        <div class="question">點心時間</div>
+        <div class="answer">
+            <div class="indent-list"><span><div class="indent-list" style=""><font size="3">1.</font><div style="width: 752.037px;"><font size="3"><span style="white-space: normal">領取</span><span style="white-space: normal">時間：</span><span style="white-space: normal"><span class="highlight">2026年10月14日(三) 下午15:00 (預定)</span></span></font></div></div><div class="indent-list" style=""><font size="3">2.</font><div style="width: 752.037px;"><font size="3">領取地點：蘭陽院區地下二樓 <b>教學研究部辦公室</b> 👉<span class="link-container"><a href="https://drive.google.com/file/d/1UErCjRU9Q_p72xCWGD9MC4b0BvaiZ3m0/view?usp=drive_link" target="_blank" class="link-btn" style="color: rgb(52, 152, 219);">位置圖</a></span></font></div></div><div class="indent-list" style=""><font size="3">3.</font><div style="width: 752.037px;"><font size="3">活動說明：<b style="">邱士華 教研副院長 </b>為體恤及慰勞同學們學習辛勞，準備點心為大家加油打氣。
+</font><span style="white-space: normal; font-size: 1em;"><span style="font-size: medium;">餐點送達會發放簡訊通知，請收到簡訊再前往領取。</span></span></div></div></span></div>
+        </div>
+    </div>
+
+        <div class="qa-item">
+            <div class="question">院內課程</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div><b>【2+2+2系列講座】</b>
+ (1) 日期時間：<span style="color: rgb(217, 83, 79); font-weight: 700;">10月6日(二) </span><span style="white-space: normal"><span style="font-size: 1em;">&nbsp;<b>14:00~16:00</b><br>&nbsp;(2) 課程主題：</span></span><span style="white-space-collapse: collapse;">悲傷輔導-當悲傷讓大腦無法休息：從腦科學談失眠、情緒調節與身心恢復<br></span></div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>【Grand Round系列講座】</b><br> (1) 日期時間：<span style="color: rgb(217, 83, 79); font-weight: 700;">10月8日(四)</span><span style="white-space: normal;">&nbsp; <b>07:20~08:10</b><br></span><span style="white-space: normal;">&nbsp;(2) 課程主題：</span><span lang="EN-US" style="color: inherit; font: inherit; white-space: normal; border: 0px; margin: 0px; padding: 0px; vertical-align: baseline;">PGY</span><font color="#242424" face="微軟正黑體, sans-serif, serif, EmojiFont"><span style="white-space-collapse: collapse;">社區醫學教學模式</span></font><div style=""><font face="微軟正黑體, sans-serif, serif, EmojiFont"><span style="white-space-collapse: collapse;"><font color="#242424">★ Grand Round系列講座</font><font color="#0f6ce6">備有早餐</font><font color="#242424">，數量有限，請提早報到。</font></span></font></div></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. 離院 -->
+    <div id="checkout" class="content-section">
+        <div class="qa-item">
+            <div class="question">實習最後一天的離院流程</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div>離院時間：請於實習最後一日 13:30～17:30，至教學研究部（蘭陽院區B2）辦理離院手續。
+</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div>離院前須<b>繳交資料：</b></div></div>
+                <div class="indent-list" style="padding-left: 1.5em;">
+                    <span>(1)&nbsp;</span>
+                    <div><b>填寫意見表單回饋</b>&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://docs.google.com/forms/d/e/1FAIpQLScWk1gm7sWdSFsf_wpgmAPQ6eDlz8ScuVjY6W8sIyF7XPr7YA/viewform" target="_blank" class="link-btn">點我填寫</a></span></div>
+                </div>
+                <div class="indent-list" style="padding-left: 1.5em;">
+                    <span>(2)&nbsp;</span>
+                    <div><b>E-Portfolio 流程完整填寫</b>&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://eportfolio.hosp.nycu.edu.tw/index" target="_blank" class="link-btn">網址</a></span></div>
+                </div>
+                <div class="indent-list" style="padding-left: 1.5em;"><span>(3)&nbsp;</span><div>簽到單。</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div><b>領取訓練證書：</b>以上資料核對完成，即可現場領取訓練證書。</div></div>
+                <div class="indent-list"><span>4.&nbsp;</span><div><b>宿舍鑰匙：</b>請記得歸還新民院區警衛。</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. 聯絡我們 (已改為條列式 QA 結構) -->
+    <div id="contact" class="content-section">
+        <div class="qa-item">
+            <div class="question">醫院總機</div>
+            <div class="answer">
+                <div class="indent-list"><span><span style="white-space: pre-wrap; font-size: 1em;">總機電話：</span><b style="white-space: pre-wrap; font-size: 1em;">03-9325192</b></span></div>
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">新民院區 24H窗口</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div><b>大門警衛：</b>分機 71170</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>工務值班人員：</b>分機 72000</div></div>
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">臨床科助教</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div><b>內科部：</b>楊育慈小姐（分機 13515）</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>外科部：</b>黃鏡嘉小姐（分機 13420）</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div><b>小兒科：</b>李品貞小姐（分機 15502）</div></div>
+                <div class="indent-list"><span>4.&nbsp;</span><div><b>急診醫學科：</b>曾鈺茹小姐（分機 11901）</div></div>
+                <div class="indent-list"><span>5.&nbsp;</span><div><b>家醫醫學部：</b>林彥慈小姐（分機 71292）</div></div>
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">綜合業務（蘭陽院區 B2）</div>
+            <div class="answer">
+                <div class="indent-list"><span>1.&nbsp;</span><div><b>【行政問題】</b>教學研究部：朱彥君小姐（分機 10751）</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>【宿舍問題】</b>總務室：蔡玉榕小姐（分機 10721）</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div><b>【停車申請】</b>總務室：黃鈺姍小姐（分機 10890）</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 管理者編輯控制面板 -->
+    
+
+    <footer>
+        如有問題請洽教學研究部 朱小姐<br>&nbsp;總機：03-9325192 分機 10751<br>18108@hosp.nycu.edu.tw
+    </footer>
+</div>
+
+<script id="mainScript">
+function openTab(evt, category) {
+    var i, content, tablinks;
+    content = document.getElementsByClassName("content-section");
+    for (i = 0; i < content.length; i++) {
+        content[i].classList.remove("active");
+    }
+    tablinks = document.getElementsByClassName("tab-btn");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+    document.getElementById(category).classList.add("active");
+    evt.currentTarget.classList.add("active");
+}
+        </script>
+
+
+</body></html>
