@@ -90,17 +90,17 @@
 
     <!-- 分頁選單 -->
     <div class="tab-menu">
-        <button class="tab-btn" onclick="openTab(event, 'pre-arrival')">報到前須知</button>
+        <button class="tab-btn active" onclick="openTab(event, 'pre-arrival')">報到前須知</button>
         <button class="tab-btn" onclick="openTab(event, 'admin')">差勤規範與實習課程</button>
         <button class="tab-btn" onclick="openTab(event, 'life')">宿舍</button>
         <button class="tab-btn" onclick="openTab(event, 'traffic')">交通</button>
-        <button class="tab-btn active" onclick="openTab(event, 'course')">活動預告</button>
+        <button class="tab-btn" onclick="openTab(event, 'course')">活動預告</button>
         <button class="tab-btn" onclick="openTab(event, 'checkout')">離院流程</button>
         <button class="tab-btn" onclick="openTab(event, 'contact')">聯絡我們</button>
     </div>
 
     <!-- 1. 報到前須知 -->
-    <div id="pre-arrival" class="content-section">
+    <div id="pre-arrival" class="content-section active">
         <div class="qa-item">
             <div class="question">重要報到資訊</div>
             <div class="answer">
@@ -248,7 +248,7 @@
     </div>
 
     <!-- 5. 活動預告 -->
-    <div id="course" class="content-section active">
+    <div id="course" class="content-section">
         <div class="qa-item">
             <div class="question">鈞長與您有約</div>
             <div class="answer">
