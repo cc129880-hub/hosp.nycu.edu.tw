@@ -29,25 +29,8 @@
 
         .qa-item { border-bottom: 1px solid #eee; padding: 18px 0; }
         .qa-item:last-child { border-bottom: none; }
-        
-        /* 修正標題跑版：改用相對定位與左側對齊，防止手機版字數增加時斷成二列 */
-        .question { 
-            font-weight: bold; 
-            color: var(--primary-blue); 
-            margin-bottom: 10px; 
-            font-size: 1.1em; 
-            outline: none; 
-            position: relative;
-            padding-left: 20px;
-            line-height: 1.5;
-        }
-        .question::before { 
-            content: "●"; 
-            color: var(--accent-gold); 
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
+        .question { font-weight: bold; color: var(--primary-blue); margin-bottom: 10px; display: flex; align-items: flex-start; font-size: 1.1em; outline: none; }
+        .question::before { content: "●"; margin-right: 10px; color: var(--accent-gold); }
         
         .answer { line-height: 1.8; padding: 0 15px 0 20px; color: #444; font-size: 1em; outline: none; }
         
@@ -101,44 +84,50 @@
 
 <div class="container" id="mainContainer">
     <header>
-        <h1>115學年度實習醫學生 (Clerk-1) <br>【第一梯】報到須知</h1>
-        <p><span style="font-size: 14.4px;"><b>115.09.28～115.10.23<br></b></span>國立陽明交通大學附設醫院 教學研究部</p>
+        <h1>115學年度實習醫學生 (Clerk-1) <br>【第三梯】報到須知</h1>
+        <p><span style="font-size: 14.4px;"><b>115.11.23～115.12.18<br></b></span>國立陽明交通大學附設醫院 教學研究部</p>
     </header>
 
     <!-- 分頁選單 -->
     <div class="tab-menu">
-        <button class="tab-btn" onclick="openTab(event, 'pre-arrival')">報到前須知</button>
+        <button class="tab-btn active" onclick="openTab(event, 'pre-arrival')">報到前須知</button>
         <button class="tab-btn" onclick="openTab(event, 'admin')">差勤規範與實習課程</button>
         <button class="tab-btn" onclick="openTab(event, 'life')">宿舍</button>
         <button class="tab-btn" onclick="openTab(event, 'traffic')">交通</button>
         <button class="tab-btn" onclick="openTab(event, 'course')">活動預告</button>
-        <button class="tab-btn active" onclick="openTab(event, 'checkout')">離院流程</button>
+        <button class="tab-btn" onclick="openTab(event, 'checkout')">離院流程</button>
         <button class="tab-btn" onclick="openTab(event, 'contact')">聯絡我們</button>
     </div>
 
     <!-- 1. 報到前須知 -->
-    <div id="pre-arrival" class="content-section">
+    <div id="pre-arrival" class="content-section active">
         <div class="qa-item">
             <div class="question">重要報到資訊</div>
             <div class="answer">
-                <div class="indent-list"><span>1.&nbsp;</span><div>報到時間：<span class="highlight">2026年9月29日(二) 08:40</span></div></div>
+                <div class="indent-list"><span>1.&nbsp;</span><div>報到時間：<span class="highlight"><font color="#ff0000">2026年11月23日(一) 08:45</font></span></div></div>
                 <div class="indent-list">
                     <span>2.&nbsp;</span>
-                    <div>報到地點：蘭陽院區3樓 <b>301會議室</b>&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://drive.google.com/file/d/1ZVPCWpLyONKsDJ0m6JfdU0O8Se1jfbaM/view?usp=sharing" target="_blank" class="link-btn">位置圖</a></span></div>
+                    <div>報到地點：蘭陽院區3樓 <b>301會議室</b>&nbsp;<span style="font-size: 14.44px;">👉 </span><span style="white-space: normal"><a href="https://drive.google.com/file/d/1ZVPCWpLyONKsDJ0m6JfdU0O8Se1jfbaM/view?usp=sharing" target="_blank" class="link-btn" style="font-size: 1em; color: rgb(52, 152, 219); display: inline !important;">位置圖</a></span></div>
                 </div>
                 <div class="indent-list">
                     <span>3.&nbsp;</span>
                     <div>兩院區<b>免費</b>接駁車：於大門右側搭乘。&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://www.hosp.nycu.edu.tw/ymuhbranch/bus.html" target="_blank" class="link-btn">兩院區接駁車時刻表</a></span></div>
                 </div>
+                <div class="indent-list">
+                    <span>4.&nbsp;</span>
+                    <div>本院汽機車採車牌辨識系統進出，如有停車需求請填寫申請單：&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://forms.gle/eFf3ddhcJ17hApCF7" target="_blank" class="link-btn">停車位申請表單</a></span></div>
+                </div>
             </div>
         </div>
 
         <div class="qa-item">
-            <div class="question">報到所需繳交資料(電子檔) (9/21 中午12:00截止)</div>
+            <div class="question">報到所需繳交資料(電子檔) (11/12 下午16:00截止)</div>
             <div class="answer">
-                <div style="margin-bottom: 8px;">請 E-mail 至 <a href="mailto:18108@hosp.nycu.edu.tw" class="link-btn">18108@hosp.nycu.edu.tw</a>：</div>
+                <div style="margin-bottom: 8px;">請 E-mail 至 <a href="mailto:18108@hosp.nycu.edu.tw" class="link-btn">18108@hosp.nycu.edu.tw</a>，附件超過<span style="font-size: 1em;"><b>15MB</b></span><span style="font-size: 1em;">請分開寄送。</span></div>
                 <div class="indent-list"><span>1.&nbsp;</span><div><b>證件大頭照</b>：如無電子檔，須於<b>報到日</b>繳交照片一張（1吋或2吋皆可）。</div></div>
-                <div class="indent-list"><span>2.&nbsp;</span><div><b>體檢表</b>：以「實習開始日」為基準，<b>一年內</b>之正式體檢表，需包含：一般檢查項目、<b>B型肝炎、C型肝炎、MMR 抗體、帶狀皰疹抗體及胸部 X 光</b>。若 B型肝炎表面抗原（HBsAg）及表面抗體（Anti-HBs）檢驗結果皆為陰性、MMR 或帶狀皰疹抗體檢驗結果未具陽性抗體，請另檢附疫苗接種證明。</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>體檢表</b>：以「實習開始日」為基準，<b>一年內</b>之正式體檢表，需包含：
+一般檢查項目、<b>B型肝炎、C型肝炎、MMR 抗體、帶狀皰疹抗體及胸部 X 光</b>。
+若 B型肝炎表面抗原（HBsAg）及表面抗體（Anti-HBs）檢驗結果<b>皆為陰性</b>、MMR 或帶狀皰疹抗體檢驗結果<b>未具陽性抗體</b>，請另檢附疫苗接種證明。</div></div>
                 <div class="indent-list"><span>3.&nbsp;</span><div><b>外籍學員</b>：居留證及護照影本。</div></div>
             </div>
         </div>
@@ -147,15 +136,15 @@
             <div class="question">資料與志願選填 (請注意選填開放及截止時間)</div>
             <div class="answer">
                 <div class="form-box">
-                    <b>1. 基本資料表｜全體學員必填<br></b>&nbsp; &nbsp; <b>開放時間：即日起～9/18 12:00</b><br>
+                    <b>1. 基本資料表｜全體學員必填<br></b>&nbsp; &nbsp; <b>開放時間：即日起～11/5 12:00</b><br>
                     <span>👉&nbsp;</span><a href="https://reurl.cc/QaD3L9" target="_blank" class="link-btn">填寫基本資料表</a>
                 </div>
                 <div class="form-box">
-                    <b>2. 內/外科次專志願︱僅供內、外科學生填寫<br>&nbsp; &nbsp; 開放時間：9/11 19:00</b><b>～</b><b>9/14 12:00</b><br>
+                    <b>2. 內/外科次專志願︱僅供內、外科學生填寫<br>&nbsp; &nbsp; 開放時間：11/2 19:00</b><b>～11</b><b>/5 12:00</b><br>
                     <span>👉&nbsp;</span>內科：<a href="https://forms.gle/UykUuDpq5NgT4QbZ6" target="_blank" class="link-btn">表單</a>｜<a href="https://reurl.cc/VWzvXn" target="_blank" class="link-btn">查看選填結果</a><br>
-                    <span>👉&nbsp;</span>外科：<a href="https://forms.gle/w4wiSJkmEc2LF5CX6" target="_blank" class="link-btn">表單</a>｜<a href="https://reurl.cc/jrWZoD" target="_blank" class="link-btn">查看選填結果</a><br>★ 兒科、急診組無須填寫本項。</div>
+                    <span>👉&nbsp;</span>外科：<a href="https://forms.gle/w4wiSJkmEc2LF5CX6" target="_blank" class="link-btn">表單</a>｜<a href="https://reurl.cc/jrWZoD" target="_blank" class="link-btn">查看選填結果</a><br>★ 兒科、急診同學無須填寫本項。</div>
                 <div class="form-box">
-                    <b>3. 社區醫學課程｜全體學員必填<br> 開放時間：9/16 09:00</b><b>～</b><b>9/20 17:00</b><br><span>👉&nbsp;</span><a href="https://docs.google.com/spreadsheets/d/1JGZSyt5v7Bnrr56peJorattUnWhh2UbTtANh8ypymuU/edit?gid=0#gid=0" target="_blank" class="link-btn">課表選填連結</a><br>★ 請完成所屬科別選填程序後，再進行社區醫學課程選填。<br>★ 如對社區醫學課程選填有疑問，請洽家庭醫學部林小姐（分機 71295）。<br></div>
+                    <b>3. 社區醫學課程｜全體學員必填<br>課表<font color="#f10404">公布</font>時間：11/6 17:00<br> 開放<font color="#fa0000">選填</font>時間：11/10 09:00</b><b>～11</b><b>/12 16:00</b><br><span>👉&nbsp;</span><a href="https://docs.google.com/spreadsheets/d/1JGZSyt5v7Bnrr56peJorattUnWhh2UbTtANh8ypymuU/edit?gid=0#gid=0" target="_blank" class="link-btn">課表選填連結</a><br>★ 請完成所屬科別選填程序後，再進行社區醫學課程選填。<br>如對社區醫學課程選填有疑問，請洽家庭醫學部林小姐（分機 71295）。<br></div>
             </div>
         </div>
 
@@ -196,7 +185,7 @@
                 <div class="indent-list"><span>1.&nbsp;</span><div><b>醫院資訊系統 (HIS)</b>：帳號標示於識別證背面，密碼為<span class="highlight"><font color="#1792de">身分證末 8 碼</font></span>。</div></div>
                 <div class="indent-list"><span>2.&nbsp;</span><div><b>E-Portfolio</b>：帳號標示於識別證背面，密碼為<span class="highlight"><font color="#1692df">Aa+身分證末 8 碼</font></span>。</div></div>
                 <div class="indent-list"><span>3.&nbsp;</span><div><b>圖書資源</b>：帳號為學號，密碼為<span class="highlight"><font color="#148cd7">校務系統密碼</font></span>。</div></div>
-                <div class="indent-list"><span class="highlight" style="color: #f50000;">★ 提醒：門診系統權限等同於主治醫師，僅限「查閱病歷」！嚴禁點選<span style="font-size: 1em;">「</span><span style="font-size: 1em;">編修</span><span style="font-size: 1em;">」</span><span style="font-size: 1em;">與</span><span style="font-size: 1em;">「</span><span style="font-size: 1em;">存檔」功能！避免後續影響健保申報！</span></span></div>
+                <div class="indent-list"><span class="highlight" style="color: #f50000;">★<span style="font-size: 1em;"> 重要提醒 </span>★<span style="font-size: 1em;"><br>門診系統權限等同於主治醫師，僅限「查閱病歷」！<br>嚴禁點選</span><span style="font-size: 1em;">「</span><span style="font-size: 1em;">編修</span><span style="font-size: 1em;">」</span><span style="font-size: 1em;">與</span><span style="font-size: 1em;">「</span><span style="font-size: 1em;">存檔」功能！避免後續影響健保申報！</span></span></div>
             </div>
         </div>
         <div class="qa-item">
@@ -213,8 +202,9 @@
         <div class="qa-item">
             <div class="question">宿舍住宿須知<span style="color: rgb(102, 102, 102); font-size: 17.82px;"><span style="font-weight: 400;">（宿舍管理員</span>蔡玉榕小姐<span style="font-weight: 400;">，分機：</span>10721<span style="font-weight: 400;">）</span></span></div>
             <div class="answer">
-                <div class="indent-list"><span>1.&nbsp;</span><div>入住時間：報到日前一天（<b>9/28</b>）中午 12:00 後，若有提前入住需求，請先與宿舍管理員聯繫。</div></div>
+                <div class="indent-list"><span>1.&nbsp;</span><div>入住時間：報到日前一天（<font color="#f20707" style=""><b>11/22</b></font>）中午 12:00 後，若有提前入住需求，請先與宿舍管理員聯繫。</div></div>
                 <div class="indent-list"><span>2.&nbsp;</span><div>宿舍地點：<b>新民院區 A棟3樓</b>，宿舍管理員會以<b>簡訊</b>通知鑰匙領取事宜（若門號有設定拒收企業簡訊，將無法收到）。</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div>入住前請詳閱住宿須知。</div></div>
             </div>
         </div>
 
@@ -223,8 +213,8 @@
             <div class="answer">
                 <div class="indent-list"><span>1.&nbsp;</span><div><b>房間內：</b>備有延長線、檯燈、寢具一套（被單枕套等皆有換洗，如較為怕冷或有特殊需求，建議自備合適之衣物或寢具）。</div></div>
                 <div class="indent-list"><span>2.&nbsp;</span><div><b>熱水供應時間：</b>每日 <span class="highlight"><font color="#ff0000">17:00～24:00</font></span>（盥洗用品需自備）。</div></div>
-                <div class="indent-list"><span>3.&nbsp;</span><div><b>曬衣空間限制：</b>宿舍無室外曬衣空間，備有投幣式洗衣機、烘衣機、脫水機，請分流使用。</div></div>
-                <div class="indent-list"><span>4.&nbsp;</span><div><b>網路連線：</b>房間內可使用個人行動網路（4G/5G），但無提供 Wi-Fi 及有線網路。若有 Wi-Fi 使用需求，請至公共區域連接 iTaiwan 免費無線網路。</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div><b>曬衣空間限制：</b>宿舍<b>無曬衣空間</b>，備有投幣式洗衣機、烘衣機、脫水機，請分流使用。</div></div>
+                <div class="indent-list"><span>4.&nbsp;</span><div><b>網路連線：</b>房間內可使用個人行動網路（4G/5G），但<b>無</b>提供 Wi-Fi 及有線網路。若有 Wi-Fi 使用需求，請至公共區域連接 iTaiwan 免費無線網路。</div></div>
             </div>
         </div>
         <div class="qa-item">
@@ -247,31 +237,36 @@
                     <div>兩院區<b>免費</b>接駁車：於大門右側搭乘。&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://www.hosp.nycu.edu.tw/ymuhbranch/bus.html" target="_blank" class="link-btn">兩院區接駁車時刻表</a></span></div>
                 </div>
                 <div class="indent-list"><span>2.&nbsp;</span><div>步行：持月台票穿越宜蘭火車站。</div></div>
-                <div class="indent-list"><span>3.&nbsp;</span><div>搭乘「宜蘭勁好行」縣內公車：772線。(末班車約 21:50 離院)</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div>搭乘「宜蘭勁好行」縣內公車：<b><font color="#f70202">772線 </font></b>(往大坡路)，末班車約 21:50 離院。<span style="white-space: normal"><span style="font-size: 14.44px;">👉&nbsp;</span></span><span style="white-space: normal"><a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=07720&amp;rn=1655282177287&amp;lan=C" target="_blank" class="link-btn" style="font-size: 1em;">客運即時動態</a><br><div>★班次及發車時間如有異動，以網站最新公告及即時動態資訊為準。</div></span></div></div>
             </div>
         </div>
         <div class="qa-item">
-            <div class="question">院內停車申請<span style="color: rgb(102, 102, 102); font-size: 17.82px; font-weight: 400;">（宿舍管理員</span><span style="color: rgb(102, 102, 102); font-size: 17.82px;">黃鈺姍小姐</span><span style="color: rgb(102, 102, 102); font-size: 17.82px; font-weight: 400;">，分機：</span><span style="color: rgb(102, 102, 102); font-size: 17.82px;">10890</span><span style="color: rgb(102, 102, 102); font-size: 17.82px; font-weight: 400;">）</span></div>
+            <div class="question">院內停車申請<div><span style="color: rgb(102, 102, 102); font-size: 17.82px; font-weight: 400;">（宿舍管理員</span><span style="color: rgb(102, 102, 102); font-size: 17.82px;">黃鈺姍小姐</span><span style="color: rgb(102, 102, 102); font-size: 17.82px; font-weight: 400;">，分機：</span><span style="color: rgb(102, 102, 102); font-size: 17.82px;">10890</span><span style="color: rgb(102, 102, 102); font-size: 17.82px; font-weight: 400;">）</span></div></div>
             <div class="answer">
                 <div class="indent-list">
                     <span>1.&nbsp;</span>
                     <div>兩院區均採車牌辨識系統進出，申請連結：&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://forms.gle/eFf3ddhcJ17hApCF7" target="_blank" class="link-btn">停車位申請表單</a></span></div>
                 </div>
                 <div class="indent-list"><span>2.&nbsp;</span><div><b>停車費用：</b>汽車：每日 33 元；機車：每月 150 元。</div></div>
-                <div class="indent-list"><span>3.&nbsp;</span><div><b>繳費：</b><span class="highlight">報到 7 天內</span>，避開午休時間，至蘭陽院區地下 2 樓總務室出納組完成繳費。</div></div>
+                <div class="indent-list"><span>3.&nbsp;</span><div><b>繳費：</b><span class="highlight">報到 7 天內</span>，避開午休時間，至<b>蘭陽院區地下 2 樓總務室出納組</b>完成繳費。</div></div>
             </div>
         </div>
-    </div>
+    <div class="qa-item">
+        <div class="question">兩院區停車位置</div>
+        <div class="answer">
+            <div class="indent-list"><span>1.&nbsp;<span style="white-space: pre-wrap;">蘭陽院區平面圖</span><br>2.&nbsp;<span style="white-space: pre-wrap;">新民院區平面圖</span></span></div>
+        </div>
+    </div></div>
 
     <!-- 5. 活動預告 -->
     <div id="course" class="content-section">
         <div class="qa-item">
             <div class="question">鈞長與您有約</div>
             <div class="answer">
-                <div class="indent-list"><span>1.</span><div>活動時間：<span class="highlight">2026年10月21日(三) 中午12:00</span></div></div>
+                <div class="indent-list"><span>1.</span><div>活動時間：<span class="highlight">2026年12月9日(三) 中午12:00</span></div></div>
                 <div class="indent-list">
                     <span>2.</span>
-                    <div>活動地點：蘭陽院區地下二樓 <b>第一會議室</b> 👉<span class="link-container"><a href="https://drive.google.com/file/d/1EvYR0vlXPk2V9UQjwhJ0gXr5DGYW9eBq/view?usp=drive_link" target="_blank" class="link-btn">位置圖</a></span></div>
+                    <div>活動地點：蘭陽院區地下二樓 <b>第一會議室</b><span style="white-space: normal"><span style="font-size: 1em;">&nbsp;👉</span></span><span style="white-space: normal"><span class="link-container" style="font-size: 1em;"><a href="https://drive.google.com/file/d/1EvYR0vlXPk2V9UQjwhJ0gXr5DGYW9eBq/view?usp=drive_link" target="_blank" class="link-btn">位置圖</a></span></span></div>
                 </div>
                 <div class="indent-list"><span>3.</span><div>活動主題：<b>實習生活與學習心得分享交流</b></div></div>
                 <div class="indent-list"><span>4.</span><div>活動說明：本活動為輕鬆溫馨的午餐座談，邀請同學們分享交流實習期間的心得與建議。</div></div>
@@ -284,7 +279,7 @@
             <div class="answer">
                 <div class="indent-list">
                     <span>1.&nbsp;</span>
-                    <div>領取時間：<span class="highlight">2026年10月14日(三) 下午15:00 (預定)</span></div>
+                    <div>領取時間：<span class="highlight">2026年12月2日(三) 下午16:00</span><span style="white-space: normal"><span style="color: rgb(217, 83, 79); font-weight: 700; font-size: 1em;"> (預定)</span></span></div>
                 </div>
                 <div class="indent-list">
                     <span>2.&nbsp;</span>
@@ -300,14 +295,17 @@
         <div class="qa-item">
             <div class="question">院內課程</div>
             <div class="answer">
-                <div class="indent-list"><span>1.&nbsp;</span><div><b>【2+2+2系列講座】</b><br>(1) 日期時間：<span style="color: rgb(217, 83, 79); font-weight: 700;">10月6日(二) </span><span style="white-space: normal;"><span style="font-size: 1em;">&nbsp;<b>14:00~16:00</b><br>&nbsp;(2) 課程主題：</span></span><span style="white-space-collapse: collapse;">悲傷輔導-當悲傷讓大腦無法休息：從腦科學談失眠、情緒調節與身心恢復<br></span></div></div>
-                <div class="indent-list"><span>2.&nbsp;</span><div><b>【Grand Round系列講座】</b><br>(1) 日期時間：<span style="color: rgb(217, 83, 79); font-weight: 700;">10月8日(四)</span><span style="white-space: normal;">&nbsp; <b>07:20~08:10</b><br></span><span style="white-space: normal;">&nbsp;(2) 課程主題：</span><span lang="EN-US" style="color: inherit; font: inherit; white-space: normal; border: 0px; margin: 0px; padding: 0px; vertical-align: baseline;">PGY</span><font color="#242424" face="微軟正黑體, sans-serif, serif, EmojiFont"><span style="white-space-collapse: collapse;">社區醫學教學模式</span></font><div style=""><font face="微軟正黑體, sans-serif, serif, EmojiFont"><span style="white-space-collapse: collapse;"><font color="#242424">★ Grand Round系列講座</font><font color="#0f6ce6">備有早餐</font><font color="#242424">，數量有限，請提早報到。</font></span></font></div></div></div>
+                <div class="indent-list"><span>1.&nbsp;</span><div><b>【2+2+2系列講座】</b><br>(1) 日期時間：<span style="color: rgb(217, 83, 79); font-weight: 700;">12月8日(二)</span> <b>14:00～16:00</b><br>(2) 課程主題：悲傷輔導-當悲傷讓大腦無法休息：從腦科學談失眠、情緒調節與身心恢復
+<span style="white-space: normal;">(3) 上課地點：</span>蘭陽院區地下二樓 <b>第一會議室
+</b></div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>【Grand Round系列講座】</b><br>(1) 日期時間：<span style="color: rgb(217, 83, 79); font-weight: 700;">12月10日(四)</span><span style="white-space: normal;">&nbsp; <b>07:20~08:10<br></b></span><span style="font-size: 1em; white-space-collapse: collapse;">(2) 課程主題：</span><span style="white-space-collapse: collapse;">婦科微創手術的演進與展望</span><span style="font-size: 1em; white-space-collapse: collapse;"><br></span><span style="white-space: normal;">(3) 上課地點：</span>蘭陽院區地下二樓 <b>第一會議室
+</b><font color="#242424" style="font-family: 微軟正黑體, sans-serif, serif, EmojiFont; white-space: normal;">★ Grand Round系列講座</font><font color="#0f6ce6" style="font-family: 微軟正黑體, sans-serif, serif, EmojiFont; white-space: normal;">備有早餐</font><font color="#242424" style="font-family: 微軟正黑體, sans-serif, serif, EmojiFont; white-space: normal;">，數量有限，請提早報到。<br><br></font></div></div>
             </div>
         </div>
     </div>
 
     <!-- 6. 離院 -->
-    <div id="checkout" class="content-section active">
+    <div id="checkout" class="content-section">
         <div class="qa-item">
             <div class="question">實習最後一天的離院流程</div>
             <div class="answer">
@@ -315,15 +313,15 @@
                 <div class="indent-list"><span>2.&nbsp;</span><div>離院前須<b>繳交資料：</b></div></div>
                 <div class="indent-list" style="padding-left: 1.5em;">
                     <span>(1)&nbsp;</span>
-                    <div><b>填寫意見回饋表</b>&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://docs.google.com/forms/d/e/1FAIpQLScWk1gm7sWdSFsf_wpgmAPQ6eDlz8ScuVjY6W8sIyF7XPr7YA/viewform" target="_blank" class="link-btn">點我填寫</a></span></div>
+                    <div><b>填寫意見表單回饋</b>&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://docs.google.com/forms/d/e/1FAIpQLScWk1gm7sWdSFsf_wpgmAPQ6eDlz8ScuVjY6W8sIyF7XPr7YA/viewform" target="_blank" class="link-btn">點我填寫</a></span></div>
                 </div>
                 <div class="indent-list" style="padding-left: 1.5em;">
                     <span>(2)&nbsp;</span>
-                    <div><b>完成 E-Portfolio 各項作業</b>&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://eportfolio.hosp.nycu.edu.tw/index" target="_blank" class="link-btn">網址</a></span></div>
+                    <div><b>E-Portfolio 流程完整填寫</b>&nbsp;<span style="font-size: 14.44px;">👉</span><span class="link-container"><a href="https://eportfolio.hosp.nycu.edu.tw/index" target="_blank" class="link-btn">網址</a></span></div>
                 </div>
                 <div class="indent-list" style="padding-left: 1.5em;"><span>(3)&nbsp;</span><div>簽到單。</div></div>
                 <div class="indent-list"><span>3.&nbsp;</span><div><b>領取訓練證書：</b>以上資料核對完成，即可現場領取訓練證書。</div></div>
-                <div class="indent-list"><span>4.&nbsp;</span><div><b>宿舍退宿：</b>請於<span style="white-space: normal"><span style="color: rgb(255, 0, 0); font-weight: 700; font-size: 1em;">10/24(六)下午5點前</span></span><span style="white-space: normal"><span style="font-size: 1em;">完成退宿。</span></span></div></div>
+                <div class="indent-list"><span>4.&nbsp;</span><div><b>宿舍退宿：</b>請於離院當天<span style="white-space: normal"><span style="color: rgb(255, 0, 0); font-weight: 700; font-size: 1em;">下午5點前</span></span><span style="white-space: normal"><span style="font-size: 1em;">完成退宿。若需延後退宿半天，請務必提前與宿舍管理員確認是否可配合辦理。</span></span></div></div>
                 <div class="indent-list"><span>5.&nbsp;</span><div><b>宿舍鑰匙</b><span style="white-space: normal"><span style="font-size: 1em;"><b>歸還</b></span></span><span style="white-space: normal"><b style="font-size: 1em;">：</b></span><span style="white-space: normal"><span style="font-size: 1em;">請記得歸還給新民院區警衛。</span></span></div></div>
             </div>
         </div>
@@ -342,7 +340,7 @@
             <div class="question">新民院區 24H窗口</div>
             <div class="answer">
                 <div class="indent-list"><span>1.&nbsp;</span><div><b>大門警衛：</b>分機 71170</div></div>
-                <div class="indent-list"><span>1.&nbsp;</span><div><b>工務值班人員：</b>分機 72000</div></div>
+                <div class="indent-list"><span>2.&nbsp;</span><div><b>工務值班人員：</b>分機 72000</div></div>
             </div>
         </div>
 
@@ -390,5 +388,6 @@ function openTab(evt, category) {
     evt.currentTarget.classList.add("active");
 }
         </script>
+
 
 </body></html>
